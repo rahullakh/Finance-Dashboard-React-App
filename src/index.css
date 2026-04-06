@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.dark {
+  background-color: #0f172a;
+  color: white;
+}
+
+
+.light {
+  background-color: #f8fafc;
+  color: black;
+}
+
+
+.aurora {
+  background: linear-gradient(135deg, #0f172a, #1e1b4b, #0f766e);
+  color: white;
+}
