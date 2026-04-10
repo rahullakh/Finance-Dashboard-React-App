@@ -13,12 +13,14 @@ import { useTheme } from "../../context/ThemeContext";
 import useThemeStyles from "../../hook/useStyles";
 const LineChartComponent = () => {
   const { transactions } = useAppContext();
+  console.log(transactions);
+  
   const { theme } = useTheme();
   const styles = useThemeStyles();
 
   const groupedData = transactions.reduce((acc, curr) => {
     const existing = acc.find((item) => item.name === curr.title);
-
+    
     if (existing) {
       if (curr.type === "income") {
         existing.income += Number(curr.amount);

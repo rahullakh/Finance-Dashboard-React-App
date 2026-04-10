@@ -48,7 +48,7 @@ const PieChartComponent = () => {
         Income vs Expense
       </h2>
 
-      <div className="w-full h-[300px]">
+      <div className="w-full h-[300px] pb-4">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
 

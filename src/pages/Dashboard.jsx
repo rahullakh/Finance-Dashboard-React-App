@@ -7,7 +7,7 @@ import SummaryCard from "../components/cards/SummaryCard";
 import PieChartComponent from "../components/charts/PieChartComponent";
 import LineChartComponent from "../components/charts/LineChartComponent";
 import Insights from "../components/insights/Insights";
-import AddTransactionForm from "../components/form/AddTransactionForm";
+import TransactionForm from "../components/form/TransactionForm";
 import TransactionTable from "../components/transcations/TransactionTable";
 
 const Dashboard = () => {
@@ -71,7 +71,7 @@ if (!transactions || transactions.length === 0) {
      
       <div className=" p-4 rounded-2xl shadow-md">
         <h2 className={`text-lg font-semibold mb-3`}>Add Transaction</h2>
-        <AddTransactionForm />
+        <TransactionForm />
       </div>
 
      
@@ -92,6 +92,7 @@ if (!transactions || transactions.length === 0) {
           transactions={transactions.slice(0, 5)} 
           role={role}
           onDelete={deleteTransaction}
+        
         />
       </div>
 

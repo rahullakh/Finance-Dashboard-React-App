@@ -6,8 +6,9 @@ const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   
   const [transactions, setTransactions] = useState(mockData);
-
-
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [selectedTx, setSelectedTx] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [role, setRole] = useState("admin"); 
 
  
@@ -54,6 +55,14 @@ export const AppProvider = ({ children }) => {
     setTransactions((prev) => prev.filter((t) => t.id !== id));
   };
 
+  const updateTransaction = (updatedTx) => {
+  setTransactions((prev) =>
+    prev.map((tx) =>
+      tx.id === updatedTx.id ? updatedTx : tx
+    )
+  );
+};
+
 
   const getTotalIncome = () =>
     transactions
@@ -73,12 +82,18 @@ export const AppProvider = ({ children }) => {
         transactions,
         addTransaction,
         deleteTransaction,
-      
+        updateTransaction,
         getTotalIncome,
         getTotalExpense,
         getBalance,
         role,
         setRole,
+        isEditMode,
+        setIsEditMode,
+        selectedTx,
+        setSelectedTx,
+        isModalOpen,
+        setIsModalOpen
       }}
     >
       {children}

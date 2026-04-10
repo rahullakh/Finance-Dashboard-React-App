@@ -1,9 +1,13 @@
+import { useAppContext } from "../../context/AppContext";
+import { FiEdit, FiTrash2 } from "react-icons/fi";
 const TransactionRow = ({ tx, role, onDelete }) => {
-    
-    
+  const {
+    setSelectedTx,
+    setIsEditMode,
+    setIsModalOpen
+  } = useAppContext();
   return (
     <tr className="border-b hover:bg-gray-100 dark:hover:bg-gray-700 transition">
-        
       <td className="py-2">{tx.date}</td>
       <td className="py-2">{tx.category}</td>
 
@@ -21,16 +25,31 @@ const TransactionRow = ({ tx, role, onDelete }) => {
 
       <td className="py-2 font-medium">₹ {tx.amount}</td>
 
-      {role === "admin" && (
-        <td className="py-2 text-right">
-          <button
-            onClick={() => onDelete(tx.id)}
-  className="bg-gradient-to-r from-red-500 via-rose-500 to-pink-500 text-white px-4 py-2 rounded-lg shadow-md hover:scale-105 hover:shadow-lg transition-all duration-300 w-full sm:w-auto"
-          >
-            Delete
-          </button>
-        </td>
-      )}
+     {role === "admin" && (
+  <td className="py-2 text-right space-x-3">
+
+    <button
+      onClick={() => {
+        setSelectedTx(tx);
+        setIsEditMode(true);
+        setIsModalOpen(true);
+      }}
+      className="text-blue-500 text-xl hover:scale-110 transition"
+      title="Edit"
+    >
+      <FiEdit />
+    </button>
+
+    <button
+      onClick={() => onDelete(tx.id)}
+      className="text-red-500 text-xl hover:scale-110 transition"
+      title="Delete"
+    >
+      <FiTrash2 />
+    </button>
+
+  </td>
+)}
     </tr>
   );
 };

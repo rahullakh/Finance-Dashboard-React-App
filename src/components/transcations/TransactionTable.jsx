@@ -38,6 +38,7 @@ const TransactionTable = ({ transactions, role, onDelete }) => {
                   tx={tx}
                   role={role}
                   onDelete={onDelete}
+                 
                 />
               ))
             )}
@@ -100,10 +101,10 @@ const TransactionTable = ({ transactions, role, onDelete }) => {
       {transactions.length > 0 && (
         <div className="mt-3 text-right">
           <Link
-            to="/transactions"
+            to="/"
             className={`text-sm hover:underline ${styles.link}`}
           >
-            View All →
+            View All
           </Link>
         </div>
       )}
